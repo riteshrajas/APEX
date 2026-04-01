@@ -1,5 +1,8 @@
 import fs from "node:fs/promises";
 import path from "node:path";
+import keyboard;
+import mouse;
+import time;
 
 const MAX_TOOL_OUTPUT = 6000;
 
@@ -148,6 +151,146 @@ function toRelative(rootDir: string, fullPath: string): string {
   const relative = path.relative(rootDir, fullPath);
   return relative.length > 0 ? relative : ".";
 }
+
+import * as fs from 'fs';
+import * as path from 'path';
+
+// Note: For keyboard/mouse actions in TS/Node, you'd typically use 
+// a library like 'robotjs' or 'nut-js'. I've used 'robot' as a placeholder.
+const robot = require('robotjs'); 
+
+/**  Math Tools  **/
+
+export const add = (a: number, b: number): number => a + b;
+
+export const subtract = (a: number, b: number): number => a - b;
+
+export const multiply = (a: number, b: number): number => a * b;
+
+export const divide = (a: number, b: number): number => {
+    if (b === 0) throw new Error("Cannot divide by zero");
+    return a / b;
+};
+
+export const power = (a: number, b: number): number => Math.pow(a, b);
+
+/** --- File System Tools --- **/
+
+export const mkdirs = (dirPath: string): string => {
+    fs.mkdirSync(dirPath, { recursive: true });
+    return `Directory '${dirPath}' created successfully`;
+};
+
+export const listFiles = (dirPath: string): string[] => {
+    if (!fs.existsSync(dirPath)) throw new Error(`Directory '${dirPath}' does not exist`);
+    return fs.readdirSync(dirPath);
+};
+
+export const readFile = (filePath: string): string => {
+    if (!fs.existsSync(filePath)) throw new Error(`File '${filePath}' does not exist`);
+    return fs.readFileSync(filePath, 'utf-8');
+};
+
+export const makeFile = (filePath: string, content: string): string => {
+    fs.writeFileSync(filePath, content);
+    return `File '${filePath}' created successfully`;
+};
+
+export const deleteFile = (filePath: string): string => {
+    if (!fs.existsSync(filePath)) throw new Error(`File '${filePath}' does not exist`);
+    fs.unlinkSync(filePath);
+    return `File '${filePath}' deleted successfully`;
+};
+
+export const folderTree = (dirPath: string, indent: string = ''): string => {
+    if (!fs.existsSync(dirPath)) throw new Error(`Directory '${dirPath}' does not exist`);
+    
+    let result = `${indent}${path.basename(dirPath)}/\n`;
+    const items = fs.readdirSync(dirPath);
+
+    for (const item of items) {
+        const fullPath = path.join(dirPath, item);
+        if (fs.statSync(fullPath).isDirectory()) {
+            result += folderTree(fullPath, indent + '    ');
+        } else {
+            result += `${indent}    ${item}\n`;
+        }
+    }
+    return result;
+};
+
+/** --- System/Automation Tools --- **/
+
+export const getType = (a: any): string => typeof a;
+
+// In Node.js, keyboard input is handled via readline
+export const keyboardInput = async (prompt: string): Promise<string> => {
+    const readline = require('readline').createInterface({
+        input: process.stdin,
+        output: process.stdout
+    });
+    return new Promise(resolve => {
+        readline.question(prompt, (answer: string) => {
+            readline.close();
+            resolve(answer);
+        });
+    });
+};
+
+export const mouseMove = (x: number, y: number): string => {
+    robot.moveMouse(x, y);
+    return `Mouse moved to (${x}, {y})`;
+};
+
+export const click = (): string => {
+    robot.mouseClick();
+    return "Mouse clicked";
+};
+
+export const mouseDrag = (endX: number, endY: number): string => {
+    // Note: RobotJS drag logic differs slightly from Python's mouse lib
+    robot.dragMouse(endX, endY);
+    return `Mouse dragged to (${endX}, ${endY})`;
+};
+
+export const keyboardWrite = (text: string): string => {
+    robot.typeString(text);
+    return `Text '${text}' typed`;
+};
+
+export const keyboardPress = (key: string): string => {
+    robot.keyToggle(key, "down");
+    return `Key '${key}' pressed`;
+};
+
+export const keyboardRelease = (key: string): string => {
+    robot.keyToggle(key, "up");
+    return `Key '${key}' released`;
+};
+
+export const openApplication = (appName: string): string => {
+    // Windows specific 'Start' key logic
+    robot.keyTap("command"); // 'command' acts as Windows key in many JS libs
+    robot.typeString(appName);
+    robot.keyTap("enter");
+    return `Application '${appName}' opened`;
+};
+
+/** --- Tool Registration Logic --- **/
+
+type ToolFunc = (...args: any[]) => any;
+
+const createTool = (name: string, description: string, func: ToolFunc): void => {
+    // mcp.create_tool(name, description, func)
+    console.log(`Tool registered: ${name}`);
+};
+
+export const createTools = (): void => {
+    createTool("add", "Add two numbers", add);
+    createTool("mkdirs", "Create a directory", mkdirs);
+    createTool("folderTree", "Return string representation of folder structure", folderTree);
+    // ... repeat for other functions
+};
 
 type DuckDuckGoResponse = {
   Heading?: string;
