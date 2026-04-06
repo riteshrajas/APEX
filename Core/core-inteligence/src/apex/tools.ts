@@ -1,4 +1,5 @@
 import fs from "node:fs/promises";
+import * as fsSync from "node:fs";
 import path from "node:path";
 import keyboard;
 import mouse;
@@ -152,9 +153,6 @@ function toRelative(rootDir: string, fullPath: string): string {
   return relative.length > 0 ? relative : ".";
 }
 
-import * as fs from 'fs';
-import * as path from 'path';
-
 // Note: For keyboard/mouse actions in TS/Node, you'd typically use 
 // a library like 'robotjs' or 'nut-js'. I've used 'robot' as a placeholder.
 const robot = require('robotjs'); 
@@ -177,45 +175,52 @@ export const power = (a: number, b: number): number => Math.pow(a, b);
 /** --- File System Tools --- **/
 
 export const mkdirs = (dirPath: string): string => {
-    fs.mkdirSync(dirPath, { recursive: true });
+    fsSync.mkdirSync(dirPath, { recursive: true });
     return `Directory '${dirPath}' created successfully`;
 };
 
 export const listFiles = (dirPath: string): string[] => {
-    if (!fs.existsSync(dirPath)) throw new Error(`Directory '${dirPath}' does not exist`);
-    return fs.readdirSync(dirPath);
+    if (!fsSync.existsSync(dirPath)) throw new Error(`Directory '${dirPath}' does not exist`);
+    return fsSync.readdirSync(dirPath);
 };
 
 export const readFile = (filePath: string): string => {
-    if (!fs.existsSync(filePath)) throw new Error(`File '${filePath}' does not exist`);
-    return fs.readFileSync(filePath, 'utf-8');
+    if (!fsSync.existsSync(filePath)) throw new Error(`File '${filePath}' does not exist`);
+    return fsSync.readFileSync(filePath, 'utf-8');
 };
 
 export const makeFile = (filePath: string, content: string): string => {
-    fs.writeFileSync(filePath, content);
+    fsSync.writeFileSync(filePath, content);
     return `File '${filePath}' created successfully`;
 };
 
 export const deleteFile = (filePath: string): string => {
-    if (!fs.existsSync(filePath)) throw new Error(`File '${filePath}' does not exist`);
-    fs.unlinkSync(filePath);
+    if (!fsSync.existsSync(filePath)) throw new Error(`File '${filePath}' does not exist`);
+    fsSync.unlinkSync(filePath);
     return `File '${filePath}' deleted successfully`;
 };
 
-export const folderTree = (dirPath: string, indent: string = ''): string => {
-    if (!fs.existsSync(dirPath)) throw new Error(`Directory '${dirPath}' does not exist`);
-    
-    let result = `${indent}${path.basename(dirPath)}/\n`;
-    const items = fs.readdirSync(dirPath);
-
-    for (const item of items) {
-        const fullPath = path.join(dirPath, item);
-        if (fs.statSync(fullPath).isDirectory()) {
-            result += folderTree(fullPath, indent + '    ');
-        } else {
-            result += `${indent}    ${item}\n`;
-        }
+export const folderTree = async (dirPath: string, indent: string = ''): Promise<string> => {
+    let items;
+    try {
+        items = await fs.readdir(dirPath, { withFileTypes: true });
+    } catch (error) {
+        throw new Error(`Directory '${dirPath}' does not exist`);
     }
+
+    let result = `${indent}${path.basename(dirPath)}/\n`;
+
+    const subTasks = items.map(async (item) => {
+        const fullPath = path.join(dirPath, item.name);
+        if (item.isDirectory()) {
+            return await folderTree(fullPath, indent + '    ');
+        } else {
+            return `${indent}    ${item.name}\n`;
+        }
+    });
+
+    const subResults = await Promise.all(subTasks);
+    result += subResults.join('');
     return result;
 };
 
