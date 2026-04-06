@@ -13,6 +13,7 @@ import { InMemoryEventStore } from "@modelcontextprotocol/sdk/examples/shared/in
 import { CallToolRequestSchema, ListToolsRequestSchema, isInitializeRequest } from "@modelcontextprotocol/sdk/types.js";
 import { createApexRuntime } from "./apex/runtime.js";
 import type { AgentMode, ProviderMode } from "./apex/types.js";
+import { isFiniteNumber, parsePositiveInteger } from "./apex/utils.js";
 
 
 type ToolResult = {
@@ -1002,10 +1003,6 @@ function parseHistoryItem(value: unknown, name: string): ChatHistoryItem {
   return { role, content };
 }
 
-function isFiniteNumber(value: unknown): value is number {
-  return typeof value === "number" && Number.isFinite(value);
-}
-
 function parseCsvList(value?: string): string[] | undefined {
   if (!value) {
     return undefined;
@@ -1015,17 +1012,6 @@ function parseCsvList(value?: string): string[] | undefined {
     .map((item) => item.trim())
     .filter((item) => item.length > 0);
   return items.length > 0 ? items : undefined;
-}
-
-function parsePositiveInteger(value: string | undefined, fallback: number): number {
-  if (!value) {
-    return fallback;
-  }
-  const parsed = Number(value);
-  if (!Number.isInteger(parsed) || parsed < 1) {
-    return fallback;
-  }
-  return parsed;
 }
 
 function parseChatRequest(body: unknown): {
