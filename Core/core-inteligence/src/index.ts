@@ -60,6 +60,7 @@ const DEFAULT_SUBAGENT_STEPS = parsePositiveInteger(process.env.SUBAGENT_MAX_STE
 const MCP_HOST = process.env.MCP_HOST || "127.0.0.1";
 const MCP_PORT = parsePositiveInteger(process.env.MCP_PORT, 3000);
 const MCP_ALLOWED_HOSTS = parseCsvList(process.env.MCP_ALLOWED_HOSTS);
+const APEX_API_KEY = process.env.APEX_API_KEY;
 const SOURCE_DIR = path.dirname(fileURLToPath(import.meta.url));
 const PROJECT_ROOT = path.join(SOURCE_DIR, "..");
 
@@ -317,6 +318,20 @@ const tools = [
   }
 ];
 
+function authMiddleware(req: express.Request, res: express.Response, next: express.NextFunction) {
+  if (!APEX_API_KEY) {
+    return next();
+  }
+
+  const apiKey = req.headers["x-api-key"];
+  if (apiKey !== APEX_API_KEY) {
+    res.status(401).json({ error: "Unauthorized: Invalid or missing API key" });
+    return;
+  }
+
+  next();
+}
+
 function createServer() {
   const server = new Server(
     {
@@ -535,7 +550,7 @@ async function main() {
 
   app.use("/", express.static(publicDir, { index: "index.html" }));
 
-  app.get("/api/health", (req, res) => {
+  app.get("/api/health", authMiddleware, (req, res) => {
     const health = apex.health();
     res.json({
       status: "ok",
@@ -549,7 +564,7 @@ async function main() {
     });
   });
 
-  app.post("/api/chat", async (req, res) => {
+  app.post("/api/chat", authMiddleware, async (req, res) => {
     let payload: {
       message: string;
       system?: string;
@@ -598,7 +613,7 @@ async function main() {
     }
   });
 
-  app.all("/mcp", async (req, res) => {
+  app.all("/mcp", authMiddleware, async (req, res) => {
     try {
       const sessionIdHeader = req.headers["mcp-session-id"];
       const sessionId = Array.isArray(sessionIdHeader) ? sessionIdHeader[0] : sessionIdHeader;
