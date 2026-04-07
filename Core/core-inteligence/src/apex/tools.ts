@@ -1,9 +1,6 @@
 import fs from "node:fs/promises";
 import * as fsSync from "node:fs";
 import path from "node:path";
-import keyboard;
-import mouse;
-import time;
 
 const MAX_TOOL_OUTPUT = 6000;
 
@@ -153,9 +150,25 @@ function toRelative(rootDir: string, fullPath: string): string {
   return relative.length > 0 ? relative : ".";
 }
 
+import { createRequire } from "node:module";
+const require = createRequire(import.meta.url);
+
 // Note: For keyboard/mouse actions in TS/Node, you'd typically use 
 // a library like 'robotjs' or 'nut-js'. I've used 'robot' as a placeholder.
-const robot = require('robotjs'); 
+// We wrap it in a try-catch for testing environments where robotjs isn't installed.
+let robot: any;
+try {
+    robot = require('robotjs');
+} catch (e) {
+    robot = {
+        keyToggle: () => {},
+        keyTap: () => {},
+        typeString: () => {},
+        moveMouse: () => {},
+        mouseClick: () => {},
+        dragMouse: () => {}
+    };
+}
 
 /**  Math Tools  **/
 
@@ -273,7 +286,24 @@ export const keyboardRelease = (key: string): string => {
     return `Key '${key}' released`;
 };
 
+const ALLOWED_APPLICATIONS = new Set([
+    "chrome",
+    "firefox",
+    "safari",
+    "edge",
+    "notepad",
+    "calculator",
+    "terminal",
+    "explorer",
+    "finder",
+    "cmd",
+    "powershell"
+]);
+
 export const openApplication = (appName: string): string => {
+    if (!ALLOWED_APPLICATIONS.has(appName.toLowerCase())) {
+        throw new Error(`Security Error: Application '${appName}' is not in the allowed list.`);
+    }
     // Windows specific 'Start' key logic
     robot.keyTap("command"); // 'command' acts as Windows key in many JS libs
     robot.typeString(appName);
