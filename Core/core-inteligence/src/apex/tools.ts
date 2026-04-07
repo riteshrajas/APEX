@@ -1,9 +1,6 @@
 import fs from "node:fs/promises";
 import * as fsSync from "node:fs";
 import path from "node:path";
-import keyboard;
-import mouse;
-import time;
 
 const MAX_TOOL_OUTPUT = 6000;
 
@@ -155,7 +152,14 @@ function toRelative(rootDir: string, fullPath: string): string {
 
 // Note: For keyboard/mouse actions in TS/Node, you'd typically use 
 // a library like 'robotjs' or 'nut-js'. I've used 'robot' as a placeholder.
-const robot = require('robotjs'); 
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
+let robot: any;
+try {
+  robot = require('robotjs');
+} catch (e) {
+  robot = {};
+}
 
 /**  Math Tools  **/
 
