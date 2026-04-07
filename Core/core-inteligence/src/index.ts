@@ -1081,3 +1081,13 @@ main().catch((error) => {
   process.exit(1);
 });
 
+
+export const __TEST__ = {
+  get jobQueue() { return jobQueue; },
+  get jobStore() { return jobStore; },
+  get workerActive() { return workerActive; },
+  set workerActive(val) { workerActive = val; },
+  processQueue, runJob: runJob, enqueueJob,
+  runJob,
+  enqueueJob
+};
