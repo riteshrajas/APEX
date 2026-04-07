@@ -1,5 +1,6 @@
 import { ChatOllama } from "@langchain/community/chat_models/ollama";
 import { AIMessage, HumanMessage, SystemMessage } from "@langchain/core/messages";
+import { isFiniteNumber, parsePositiveInteger } from "./utils.js";
 
 import type {
   ChatTurn,
@@ -345,21 +346,6 @@ function parseOptionalNumber(value: string | undefined): number | undefined {
   }
   const parsed = Number(value);
   return Number.isFinite(parsed) ? parsed : undefined;
-}
-
-function parsePositiveInteger(value: string | undefined, fallback: number): number {
-  if (!value) {
-    return fallback;
-  }
-  const parsed = Number(value);
-  if (!Number.isInteger(parsed) || parsed < 1) {
-    return fallback;
-  }
-  return parsed;
-}
-
-function isFiniteNumber(value: unknown): value is number {
-  return typeof value === "number" && Number.isFinite(value);
 }
 
 type OpenAiChatResponse = {
