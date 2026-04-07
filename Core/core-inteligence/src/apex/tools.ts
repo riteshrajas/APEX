@@ -1,9 +1,6 @@
 import fs from "node:fs/promises";
 import * as fsSync from "node:fs";
 import path from "node:path";
-import keyboard;
-import mouse;
-import time;
 
 const MAX_TOOL_OUTPUT = 6000;
 
@@ -273,7 +270,27 @@ export const keyboardRelease = (key: string): string => {
     return `Key '${key}' released`;
 };
 
+const ALLOWED_APPLICATIONS = new Set([
+    "notepad",
+    "calculator",
+    "browser",
+    "chrome",
+    "firefox",
+    "safari",
+    "explorer",
+    "terminal",
+    "vscode",
+    "cmd",
+    "powershell",
+    "bash"
+]);
+
 export const openApplication = (appName: string): string => {
+    const normalizedAppName = appName.trim().toLowerCase();
+    if (!ALLOWED_APPLICATIONS.has(normalizedAppName)) {
+        throw new Error(`Security Error: Application '${appName}' is not in the allowlist.`);
+    }
+
     // Windows specific 'Start' key logic
     robot.keyTap("command"); // 'command' acts as Windows key in many JS libs
     robot.typeString(appName);
