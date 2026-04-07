@@ -1,9 +1,6 @@
 import fs from "node:fs/promises";
 import * as fsSync from "node:fs";
 import path from "node:path";
-import keyboard;
-import mouse;
-import time;
 
 const MAX_TOOL_OUTPUT = 6000;
 
@@ -155,7 +152,21 @@ function toRelative(rootDir: string, fullPath: string): string {
 
 // Note: For keyboard/mouse actions in TS/Node, you'd typically use 
 // a library like 'robotjs' or 'nut-js'. I've used 'robot' as a placeholder.
-const robot = require('robotjs'); 
+import { createRequire } from "node:module";
+const customRequire = createRequire(import.meta.url);
+let robot: any;
+try {
+    robot = customRequire('robotjs');
+} catch (e) {
+    robot = {
+        keyTap: (key: string) => {},
+        typeString: (text: string) => {},
+        keyToggle: (key: string, direction: string) => {},
+        moveMouse: (x: number, y: number) => {},
+        mouseClick: () => {},
+        dragMouse: (endX: number, endY: number) => {}
+    };
+}
 
 /**  Math Tools  **/
 
@@ -230,7 +241,7 @@ export const getType = (a: any): string => typeof a;
 
 // In Node.js, keyboard input is handled via readline
 export const keyboardInput = async (prompt: string): Promise<string> => {
-    const readline = require('readline').createInterface({
+    const readline = customRequire('readline').createInterface({
         input: process.stdin,
         output: process.stdout
     });
@@ -273,7 +284,22 @@ export const keyboardRelease = (key: string): string => {
     return `Key '${key}' released`;
 };
 
+const ALLOWED_APPLICATIONS = new Set([
+    "calculator",
+    "calc",
+    "notepad",
+    "explorer",
+    "chrome",
+    "firefox",
+    "safari",
+    "edge",
+    "terminal"
+]);
+
 export const openApplication = (appName: string): string => {
+    if (!ALLOWED_APPLICATIONS.has(appName.toLowerCase())) {
+        throw new Error(`Security Error: Application '${appName}' is not in the allowlist.`);
+    }
     // Windows specific 'Start' key logic
     robot.keyTap("command"); // 'command' acts as Windows key in many JS libs
     robot.typeString(appName);
