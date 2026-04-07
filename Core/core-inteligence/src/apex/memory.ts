@@ -248,17 +248,16 @@ function cosineSimilarity(left: Map<string, number>, right: Map<string, number>)
   let leftMagnitude = 0;
   let rightMagnitude = 0;
 
-  for (const value of left.values()) {
-    leftMagnitude += value * value;
+  for (const [token, leftValue] of left.entries()) {
+    leftMagnitude += leftValue * leftValue;
+    const rightValue = right.get(token);
+    if (rightValue !== undefined) {
+      dot += leftValue * rightValue;
+    }
   }
 
-  for (const value of right.values()) {
-    rightMagnitude += value * value;
-  }
-
-  for (const [token, value] of left.entries()) {
-    const rightValue = right.get(token) || 0;
-    dot += value * rightValue;
+  for (const rightValue of right.values()) {
+    rightMagnitude += rightValue * rightValue;
   }
 
   const denominator = Math.sqrt(leftMagnitude) * Math.sqrt(rightMagnitude);
