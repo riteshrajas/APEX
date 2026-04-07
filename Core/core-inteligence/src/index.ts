@@ -13,7 +13,7 @@ import { InMemoryEventStore } from "@modelcontextprotocol/sdk/examples/shared/in
 import { CallToolRequestSchema, ListToolsRequestSchema, isInitializeRequest } from "@modelcontextprotocol/sdk/types.js";
 import { createApexRuntime } from "./apex/runtime.js";
 import type { AgentMode, ProviderMode } from "./apex/types.js";
-import { isFiniteNumber, parsePositiveInteger } from "./apex/utils.js";
+import { isFiniteNumber, parsePositiveInteger, nowIso } from "./apex/utils.js";
 
 
 type ToolResult = {
@@ -1070,10 +1070,6 @@ function normalizeOptionalString(value: string | undefined): string | undefined 
   }
   const trimmed = value.trim();
   return trimmed.length > 0 ? trimmed : undefined;
-}
-
-function nowIso() {
-  return new Date().toISOString();
 }
 
 main().catch((error) => {

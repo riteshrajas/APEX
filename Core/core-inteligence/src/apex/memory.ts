@@ -3,6 +3,7 @@ import fs from "node:fs";
 import path from "node:path";
 
 import type { AgentKind, ChatRole, ProviderName } from "./types.js";
+import { nowIso } from "./utils.js";
 
 type MemoryTurn = {
   role: ChatRole;
@@ -267,9 +268,5 @@ function cosineSimilarity(left: Map<string, number>, right: Map<string, number>)
   }
 
   return dot / denominator;
-}
-
-function nowIso(): string {
-  return new Date().toISOString();
 }
 

@@ -12,3 +12,7 @@ export function parsePositiveInteger(value: string | undefined, fallback: number
   }
   return parsed;
 }
+
+export function nowIso(): string {
+  return new Date().toISOString();
+}
