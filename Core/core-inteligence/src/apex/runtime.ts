@@ -5,6 +5,7 @@ import { ApexMemory } from "./memory.js";
 import { listAgents, routePrompt } from "./router.js";
 import { MultiProviderClient } from "./providers.js";
 import { ApexToolbox } from "./tools.js";
+import { normalizeOptionalString } from "./utils.js";
 import type {
   AgentKind,
   AgentMode,
@@ -352,14 +353,6 @@ function normalizeHistory(history: ChatTurn[], maxHistory: number): ChatTurn[] {
     .filter((turn) => turn.role === "assistant" || turn.role === "user" || turn.role === "system");
 
   return safeTurns.slice(-maxHistory);
-}
-
-function normalizeOptionalString(value: string | undefined): string | undefined {
-  if (value === undefined) {
-    return undefined;
-  }
-  const trimmed = value.trim();
-  return trimmed.length > 0 ? trimmed : undefined;
 }
 
 function requireString(value: string | undefined, name: string): string {
