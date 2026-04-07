@@ -227,11 +227,20 @@ function emptyDocument(): MemoryDocument {
 }
 
 function tokenize(value: string): string[] {
-  return value
-    .toLowerCase()
-    .split(/[^a-z0-9]+/)
-    .map((token) => token.trim())
-    .filter((token) => token.length > 2 && !STOP_WORDS.has(token));
+  const matches = value.toLowerCase().match(/[a-z0-9]{3,}/g);
+  if (!matches) {
+    return [];
+  }
+
+  const result: string[] = [];
+  for (let i = 0; i < matches.length; i++) {
+    const token = matches[i];
+    if (!STOP_WORDS.has(token)) {
+      result.push(token);
+    }
+  }
+
+  return result;
 }
 
 function toTokenMap(tokens: string[]): Map<string, number> {
