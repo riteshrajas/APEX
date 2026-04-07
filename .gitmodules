@@ -1,3 +1,6 @@
 [submodule "Core"]
 	path = Core
 	url = https://github.com/riteshrajas/Core.git
+[submodule "MicroMax"]
+	path = MicroMax
+	url = https://github.com/riteshrajas/MicroMax.git
