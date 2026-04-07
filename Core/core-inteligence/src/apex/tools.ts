@@ -1,9 +1,6 @@
 import fs from "node:fs/promises";
 import * as fsSync from "node:fs";
 import path from "node:path";
-import keyboard;
-import mouse;
-import time;
 
 const MAX_TOOL_OUTPUT = 6000;
 
