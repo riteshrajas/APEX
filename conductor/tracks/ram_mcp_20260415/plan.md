@@ -15,7 +15,7 @@
 
 ## Phase 2: Tooling Integration and System Awareness
 
-- [ ] **Task: Enhance System Status Monitoring**
+- [~] **Task: Enhance System Status Monitoring**
     - [ ] Write tests for the `getProjectStatus` server action.
     - [ ] Refactor `getProjectStatus` in `actions.ts` to provide more detailed, real-time data from `IOT/` and `MicroMax/`.
     - [ ] Ensure the output is formatted for optimal text-to-speech conversion.
