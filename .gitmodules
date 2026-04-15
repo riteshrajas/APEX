@@ -4,3 +4,6 @@
 [submodule "MicroMax"]
 	path = MicroMax
 	url = https://github.com/riteshrajas/MicroMax.git
+[submodule "IOT"]
+	path = IOT
+	url = https://github.com/riteshrajas/IOT.git
