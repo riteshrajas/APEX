@@ -4,6 +4,8 @@ Project roadmap: see `MASTER_PLAN.md`.
 
 Desktop automation CLI (mouse/keyboard control): see `docs/CLI_CONTROL.md`.
 
+CLI-only RAM integration roadmap: see `CLI_MASTER_PLAN.md`.
+
 Quick dry-run example:
 
 ```bash
