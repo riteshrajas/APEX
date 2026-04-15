@@ -15,10 +15,10 @@
 
 ## Phase 2: Tooling Integration and System Awareness
 
-- [~] **Task: Enhance System Status Monitoring**
-    - [ ] Write tests for the `getProjectStatus` server action.
-    - [ ] Refactor `getProjectStatus` in `actions.ts` to provide more detailed, real-time data from `IOT/` and `MicroMax/`.
-    - [ ] Ensure the output is formatted for optimal text-to-speech conversion.
+- [x] **Task: Enhance System Status Monitoring**
+    - [x] Write tests for the `getProjectStatus` server action.
+    - [x] Refactor `getProjectStatus` in `actions.ts` to provide more detailed, real-time data from `IOT/` and `MicroMax/`.
+    - [x] Ensure the output is formatted for optimal text-to-speech conversion.
 - [ ] **Task: Advanced CLI and File Access Tools**
     - [ ] Write tests for `executeCLICommand`, `readFile`, and `writeFile` server actions.
     - [ ] Add security validation to `writeFile` and `executeCLICommand` to prevent accidental system damage.
