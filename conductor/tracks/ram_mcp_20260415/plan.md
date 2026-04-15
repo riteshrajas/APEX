@@ -19,10 +19,10 @@
     - [x] Write tests for the `getProjectStatus` server action.
     - [x] Refactor `getProjectStatus` in `actions.ts` to provide more detailed, real-time data from `IOT/` and `MicroMax/`.
     - [x] Ensure the output is formatted for optimal text-to-speech conversion.
-- [ ] **Task: Advanced CLI and File Access Tools**
-    - [ ] Write tests for `executeCLICommand`, `readFile`, and `writeFile` server actions.
-    - [ ] Add security validation to `writeFile` and `executeCLICommand` to prevent accidental system damage.
-    - [ ] Map these tools to the ElevenLabs SDK `clientTools` with clear descriptions to guide the agent's usage.
+- [x] **Task: Advanced CLI and File Access Tools** 6dd3407
+    - [x] Write tests for `executeCLICommand`, `readFile`, and `writeFile` server actions.
+    - [x] Add security validation to `writeFile` and `executeCLICommand` to prevent accidental system damage.
+    - [x] Map these tools to the ElevenLabs SDK `clientTools` with clear descriptions to guide the agent's usage.
 - [ ] **Task: Conductor - User Manual Verification 'Phase 2: Tooling Integration and System Awareness' (Protocol in workflow.md)**
 
 ## Phase 3: Multi-Agent Orchestration Logic
