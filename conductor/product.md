@@ -14,8 +14,8 @@ The singular mission of APEX is to serve as an **Autonomous Physical-Digital Bri
 
 ## ✨ Key Features (Prioritized)
 For the next phase of development, the focus is on enhancing the "Brain" and the "Interface":
-- **Voice-First Interface:** Implementation of always-on, low-latency voice-activated control, dictation plumbing, and real-time audio feedback.
-- **Advanced Agentic Tooling:** Deepening the integration of the Model Context Protocol (MCP), multi-agent task planning (ULTRAPLAN), and robust persistent memory snapshotting.
+- **Realtime Voice Orchestration:** Low-latency conversational control (invoked on boot) with proactive status alerts and automated neural sync.
+- **Autonomous Multi-Agent Tooling:** Advanced integration of MCP, allowing a Master Agent to delegate tasks to specialized workers with full CLI and file system access.
 
 ## 🛠️ Technical Constraints
 - **Local-First Execution:** To ensure privacy, speed, and reliability, the core logic and agentic orchestration must run efficiently on local machines using Bun and Node.js.

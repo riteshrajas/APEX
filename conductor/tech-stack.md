@@ -19,6 +19,8 @@
 
 ## 🤖 AI & Agentic Stack
 - **Anthropic / AWS Bedrock / Google Vertex:** Core LLM engines for high-level reasoning.
+- **Pyintel Foundry:** Local LLM gateway for connecting models from LM Box, Ollama, and other local providers.
+- **ElevenLabs SDK:** Real-time conversational AI and high-fidelity voice synthesis.
 - **Model Context Protocol (MCP):** Universal standard for connecting agents to external tools and data.
 - **OpenTelemetry:** Monitoring and observability across the agentic platform.
 
