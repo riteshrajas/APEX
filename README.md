@@ -68,6 +68,9 @@ cargo run
 ## Documentation
 
 - Architecture overview: [`ARCHITECTURE.md`](./ARCHITECTURE.md)
+- ASP v2.0 specification: [`SPEC_ASP_V2.md`](./SPEC_ASP_V2.md)
+- Master setup guide: [`MASTER_SETUP_GUIDE.md`](./MASTER_SETUP_GUIDE.md)
+- Node docs: [`docs/MicroMax/DOCS.md`](./docs/MicroMax/DOCS.md), [`docs/MiniMax/DOCS.md`](./docs/MiniMax/DOCS.md), [`docs/MegaMax/DOCS.md`](./docs/MegaMax/DOCS.md)
 - Agent capability notes: [`AGENT.md`](./AGENT.md)
 - Workflow and planning system: [`conductor/index.md`](./conductor/index.md)
 - Conductor module guide: [`conductor/README.md`](./conductor/README.md)
@@ -78,4 +81,3 @@ cargo run
 - **[Contributing](./CONTRIBUTING.md)**
 - **[Code of Conduct](./CODE_OF_CONDUCT.md)**
 - **[Security Policy](./SECURITY.md)**
-
