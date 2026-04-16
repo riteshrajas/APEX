@@ -1,0 +1,99 @@
+name: Bug Report
+description: Report a bug to help us improve APEX
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for reporting a bug! Please provide as much detail as possible to help us understand and fix the issue.
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: A clear description of the bug. What went wrong?
+      placeholder: |
+        The dashboard crashes when I try to navigate to...
+        The CLI command fails with an error when...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Behavior
+      description: What should happen instead?
+      placeholder: The dashboard should display the status page without crashing
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to Reproduce
+      description: How can we reproduce the bug?
+      placeholder: |
+        1. Clone the repository
+        2. Run `npm install` in Core/RAM
+        3. Run `npm run dev`
+        4. Navigate to the status page
+        5. Click "Refresh"
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs or Error Messages
+      description: Paste any error messages, stack traces, or relevant logs
+      render: markdown
+      placeholder: |
+        ```
+        Error: Cannot read property 'map' of undefined
+          at DashboardComponent (dashboard.tsx:42)
+        ```
+
+  - type: dropdown
+    id: affected_module
+    attributes:
+      label: Affected Module
+      description: Which APEX module is affected?
+      options:
+        - Core/CLI
+        - Core/RAM
+        - MicroMax/OS
+        - MicroMax/OS Client
+        - IOT
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Describe your system environment
+      placeholder: |
+        - OS: Windows 11
+        - Node.js: 18.16.0
+        - npm: 9.6.7
+        - PlatformIO: 6.1.0
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional Context
+      description: Any other information that might help us understand the issue
+      placeholder: This started happening after I updated to version X...
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Checklist
+      options:
+        - label: I have checked existing issues and discussions
+          required: true
+        - label: I have provided sufficient detail to reproduce the bug
+          required: true

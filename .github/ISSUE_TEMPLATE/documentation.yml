@@ -1,0 +1,49 @@
+name: Documentation Improvement
+description: Suggest documentation improvements or report unclear documentation
+labels: ["documentation"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for helping us improve APEX documentation!
+
+  - type: textarea
+    id: issue
+    attributes:
+      label: What's Unclear or Missing?
+      description: Describe what documentation needs improvement
+      placeholder: |
+        The ARCHITECTURE.md doesn't explain how the Apex Serial Protocol (ASP) handles errors.
+        It would be helpful to have examples of error messages and recovery procedures.
+    validations:
+      required: true
+
+  - type: textarea
+    id: affected_docs
+    attributes:
+      label: Affected Documentation
+      description: Which documentation files need updates?
+      placeholder: |
+        - ARCHITECTURE.md
+        - Core/RAM/README.md
+      validations:
+        required: true
+
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: Suggested Improvement
+      description: What information should be added or clarified?
+      placeholder: |
+        Add an "Error Handling" section to ARCHITECTURE.md explaining:
+        - Common ASP error codes
+        - How the CLI recovers from communication failures
+        - Examples of error recovery workflows
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Checklist
+      options:
+        - label: I have checked if this documentation already exists elsewhere
+          required: true

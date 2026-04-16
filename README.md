@@ -1,6 +1,6 @@
 # APEX
 
-APEX is a multi-module automation stack that combines an AI terminal runtime, a realtime web dashboard, hardware firmware, and electronics design assets in one repository.
+**APEX** (Autonomous Physical-Digital Ecosystem) is a multi-module automation stack that bridges the gap between high-level AI reasoning and low-level physical hardware control. It combines an AI terminal runtime, a real-time web dashboard, hardware firmware, and electronics design assets into a unified repository.
 
 ## Modules
 
@@ -71,4 +71,11 @@ cargo run
 - Agent capability notes: [`AGENT.md`](./AGENT.md)
 - Workflow and planning system: [`conductor/index.md`](./conductor/index.md)
 - Conductor module guide: [`conductor/README.md`](./conductor/README.md)
+
+## Community & Policies
+
+- **[License](./LICENSE)** (MIT)
+- **[Contributing](./CONTRIBUTING.md)**
+- **[Code of Conduct](./CODE_OF_CONDUCT.md)**
+- **[Security Policy](./SECURITY.md)**
 
