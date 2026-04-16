@@ -32,8 +32,8 @@
     - [x] Define a structured "Task Registry" file or state to track sub-agent activities.
     - [x] Enhance `deploySubAgent` to create a new task in the registry and optionally initiate a background process.
     - [x] Update the system prompt to instruct the Master Agent on how to query and manage these worker tasks.
-- [ ] **Task: Proactive Notification System**
-    - [ ] Write tests for a new `checkSystemAlerts` server action.
-    - [ ] Implement a basic polling or file-watching mechanism that can trigger a "contextual update" to the agent when a critical event occurs.
-    - [ ] Ensure the agent can "speak first" to inform the user of these events.
+- [x] **Task: Proactive Notification System** e299503
+    - [x] Write tests for a new `checkSystemAlerts` server action.
+    - [x] Implement a basic polling or file-watching mechanism that can trigger a "contextual update" to the agent when a critical event occurs.
+    - [x] Ensure the agent can "speak first" to inform the user of these events.
 - [ ] **Task: Conductor - User Manual Verification 'Phase 3: Multi-Agent Orchestration Logic' (Protocol in workflow.md)**
