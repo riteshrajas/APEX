@@ -27,11 +27,11 @@
 
 ## Phase 3: Multi-Agent Orchestration Logic
 
-- [ ] **Task: Implement Master Agent Orchestration Logic**
-    - [ ] Write tests for the `deploySubAgent` server action.
-    - [ ] Define a structured "Task Registry" file or state to track sub-agent activities.
-    - [ ] Enhance `deploySubAgent` to create a new task in the registry and optionally initiate a background process.
-    - [ ] Update the system prompt to instruct the Master Agent on how to query and manage these worker tasks.
+- [x] **Task: Implement Master Agent Orchestration Logic** b89bf4a
+    - [x] Write tests for the `deploySubAgent` server action.
+    - [x] Define a structured "Task Registry" file or state to track sub-agent activities.
+    - [x] Enhance `deploySubAgent` to create a new task in the registry and optionally initiate a background process.
+    - [x] Update the system prompt to instruct the Master Agent on how to query and manage these worker tasks.
 - [ ] **Task: Proactive Notification System**
     - [ ] Write tests for a new `checkSystemAlerts` server action.
     - [ ] Implement a basic polling or file-watching mechanism that can trigger a "contextual update" to the agent when a critical event occurs.
