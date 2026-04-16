@@ -1,9 +1,15 @@
 [submodule "Core"]
 	path = Core
 	url = https://github.com/riteshrajas/Core.git
-[submodule "MicroMax"]
-	path = MicroMax
-	url = https://github.com/riteshrajas/MicroMax.git
 [submodule "IOT"]
 	path = IOT
 	url = https://github.com/riteshrajas/IOT.git
+[submodule "MicroMax"]
+	path = MicroMax
+	url = https://github.com/riteshrajas/APEX-MicroMax.git
+[submodule "MiniMax"]
+	path = MiniMax
+	url = https://github.com/riteshrajas/APEX-MiniMax.git
+[submodule "MegaMax"]
+	path = MegaMax
+	url = https://github.com/riteshrajas/APEX-MegaMax.git
