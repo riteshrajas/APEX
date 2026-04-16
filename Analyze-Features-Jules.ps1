@@ -94,7 +94,7 @@ function Invoke-JulesApi {
     param(
         [string]$Endpoint,
         [string]$Method = "GET",
-        [object]$Body = $null
+        [string]$Body = $null
     )
     
     $headers = @{
@@ -111,7 +111,7 @@ function Invoke-JulesApi {
     }
     
     if ($Body) {
-        $params["Body"] = $Body | ConvertTo-Json -Depth 10
+        $params["Body"] = $Body
     }
     
     try {
@@ -237,7 +237,7 @@ Generate a feature roadmap with:
 Output as well-structured markdown that can be committed to the repository.
 "@
 
-$sessionBody = @{
+$sessionBody = ConvertTo-Json -Depth 10 @{
     prompt = $sessionPrompt
     sourceContext = @{
         source = $selectedSource.name
@@ -247,7 +247,7 @@ $sessionBody = @{
     }
     title = "APEX Feature Opportunities Analysis"
     requirePlanApproval = $false
-} | ConvertTo-Json -Depth 10
+}
 
 try {
     $session = Invoke-JulesApi -Endpoint "/sessions" -Method POST -Body $sessionBody
