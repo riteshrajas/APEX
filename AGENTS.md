@@ -26,6 +26,20 @@ Run the nearest relevant checks before opening a PR. For dashboard changes, run 
 
 Recent history favors short imperative commits, often with a scope prefix, for example `docs: add system architecture documentation` or `conductor(setup): add conductor setup files`. Use `area: action` where possible. PRs should include a short summary, affected paths, validation steps, and screenshots for `Core/RAM` or `MicroMax/OS Client` UI changes.
 
+### Local PR Automation (Windows)
+
+To create PRs from a local machine without sharing keys/secrets, use the repo helper:
+
+```powershell
+.\open-pr-local.bat "P:\APEX\MiniMax" "feat/minimax-l2-wireless" "minimax: add wireless stack" "Implements L2 WiFi/MQTT bridge and sentry telemetry." main
+```
+
+Requirements:
+- `gh` CLI installed and authenticated (`gh auth login`)
+- existing local git credentials/SSH agent setup
+
+Security note: never share private SSH keys with agents or scripts. The helper relies on your already-authenticated local environment.
+
 ## Security & Device Notes
 
 Do not commit secrets, API keys, or machine-specific serial assumptions. When changing hardware behavior or protocol messages, update `MicroMax/OS/SPEC.md` alongside the code.
