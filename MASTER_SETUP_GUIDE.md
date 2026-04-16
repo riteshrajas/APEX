@@ -18,14 +18,14 @@ git submodule update --init --recursive
 
 ### Core/RAM
 ```bash
-cd /path/to/APEX/Core/RAM
+cd Core/RAM
 npm install
 npm run dev
 ```
 
 ### Core/CLI
 ```bash
-cd /path/to/APEX/Core/CLI
+cd Core/CLI
 bun run dev
 ```
 
@@ -49,7 +49,7 @@ bun run dev
 3. Confirm periodic telemetry (including GPS if enabled) with ASP-compliant JSON.
 
 ## 5) ASP v2.0 Conformance Checks
-- Use `/home/runner/work/APEX/APEX/SPEC_ASP_V2.md` as canonical reference.
+- Use `./SPEC_ASP_V2.md` as canonical reference.
 - Ensure nodes accept legacy minimal payloads and v2 envelope payloads.
 - Ensure parsers validate expected keys/types and reject malformed frames safely.
 
@@ -58,8 +58,8 @@ bun run dev
 - Recovery should send explicit `event`, `ack`, or `error` frames where possible.
 
 ## 7) Documentation Map
-- Protocol spec: `/home/runner/work/APEX/APEX/SPEC_ASP_V2.md`
-- Research log: `/home/runner/work/APEX/APEX/RESEARCH.md`
-- L1 docs: `/home/runner/work/APEX/APEX/docs/MicroMax/DOCS.md`
-- L2 docs: `/home/runner/work/APEX/APEX/docs/MiniMax/DOCS.md`
-- L3 docs: `/home/runner/work/APEX/APEX/docs/MegaMax/DOCS.md`
+- Protocol spec: `./SPEC_ASP_V2.md`
+- Research log: `./RESEARCH.md`
+- L1 docs: `./docs/MicroMax/DOCS.md`
+- L2 docs: `./docs/MiniMax/DOCS.md`
+- L3 docs: `./docs/MegaMax/DOCS.md`
