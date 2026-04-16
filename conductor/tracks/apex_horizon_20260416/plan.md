@@ -1,22 +1,23 @@
 # Implementation Plan: Apex Horizon
 
-## Phase 1: UI Scaffolding and Level 1 Integration - IN PROGRESS
+## Phase 1: React Hub and Level 1 Integration [checkpoint: current]
 
-- [x] **Task: Scaffold PWA Structure**
-    - [x] Create universal `index.html` and premium `styles.css`.
-    - [x] Implement modular `app.js` with transport level selectors.
-- [ ] **Task: Level 1 Serial Adapter**
-    - [ ] Port Web Serial logic from original OS Client.
-    - [ ] Implement ASP 2.0 command parser.
-- [ ] **Task: Conductor - User Manual Verification 'Phase 1: UI Scaffolding and Level 1 Integration'**
+- [x] **Task: Scaffold React/Vite PWA Structure**
+    - [x] Create React-based shell with `App.jsx`.
+    - [x] Implement premium themed UI with Tailwind-like CSS.
+- [x] **Task: Level 1 Serial Adapter (Refactored)**
+    - [x] Implement robust `SerialAdapter` using Web Serial API.
+    - [x] Implement ASP 2.0 JSON command parser.
+    - [x] Apply Google JS Style Guide fixes (naming, quotes, JSDoc).
+- [x] **Task: Conductor - User Manual Verification 'Phase 1: React Hub and Level 1 Integration'**
 
 ## Phase 2: Level 2 & 3 Transport Adapters
 
 - [ ] **Task: Local MQTT Integration (Level 2)**
-    - [ ] Implement `mqtt.js` adapter for browser-based MQTT communication.
+    - [ ] Implement `mqtt_adapter.js` with `mqtt.js`.
     - [ ] Add room-based telemetry HUD.
 - [ ] **Task: Cloud/LTE Integration (Level 3)**
-    - [ ] Implement WebSocket bridge for remote MegaMax nodes.
+    - [ ] Implement WebSocket bridge in `cloud_adapter.js` for remote MegaMax nodes.
     - [ ] Add signal strength and battery metrics.
 - [ ] **Task: Conductor - User Manual Verification 'Phase 2: Level 2 & 3 Transport Adapters'**
 
