@@ -12,6 +12,29 @@ MicroMax is the wired, low-latency endpoint layer for direct actuator/sensor con
 - Primary transport: USB Serial
 - ASP framing: newline-terminated JSON at 115200 baud (default)
 
+## Hardware Setup & Flashing
+
+### Environment
+The firmware is built using **PlatformIO**. Ensure you have the PlatformIO CLI installed (`python -m pip install platformio`).
+
+### Deployment Commands
+
+#### Standard (Uno/Pico)
+```powershell
+cd MicroMax/OS
+platformio run -e uno -t upload --upload-port COM4
+```
+
+#### ESP32-S3 (Custom Target)
+If using an ESP32-S3 DevKit, use this command sequence to handle the board override and port selection:
+```powershell
+# In PowerShell:
+$src='P:\APEX\MicroMax\OS\platformio.ini'; 
+$tmp=Join-Path $env:TEMP 'apex-pio-esp32s3.ini'; 
+(Get-Content $src -Raw) -replace '(?m)^board\s*=\s*esp32dev\s*$','board = esp32-s3-devkitc-1' | Set-Content $tmp -Encoding ascii; 
+py -m platformio run -c $tmp -e esp32 -t upload --upload-port COM18
+```
+
 ## ASP v2.0 Mapping
 - Mandatory legacy compatibility fields:
   - `action`, `target`, `value`
