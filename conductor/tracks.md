@@ -12,3 +12,8 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 - [ ] **Track: MegaMax Global Ecosystem (Level 3)** - PENDING
   *Focus: Cellular/LTE global mobility and remote outdoor nodes.*
+
+---
+
+- [ ] **Track: Apex Mobile Client**
+*Link: [./tracks/apex_mobile_client_20260418/](./tracks/apex_mobile_client_20260418/)*
