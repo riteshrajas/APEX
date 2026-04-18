@@ -1,9 +1,9 @@
 # Implementation Plan: Apex Mobile Client
 
 ## Phase 1: Android Project Initialization & Foundation
-- [ ] Task: Initialize Flutter Android project in `Core/Mobile/`
-- [ ] Task: Configure basic app metadata and permissions (Internet, Microphone)
-- [ ] Task: Set up Material 3 theme and basic navigation structure
+- [x] Task: Initialize Flutter Android project in `Core/mobile/`
+- [x] Task: Configure basic app metadata and permissions (Internet, Microphone)
+- [x] Task: Set up Material 3 theme and basic navigation structure
 - [ ] Task: Conductor - User Manual Verification 'Phase 1' (Protocol in workflow.md)
 
 ## Phase 2: Secure Remote Connectivity (Cloud Proxy)
