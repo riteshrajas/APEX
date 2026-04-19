@@ -22,7 +22,7 @@
 - [x] Task: Define Visualization Protocol for Horizon [e4bf9e2]
     - [ ] Write Failing Tests: Verify node/edge generation from AAL IR
     - [ ] Implement: Extend the Horizon API to accept AAL-driven configurations
-- [~] Task: Build React Node-Graph Component (RAM Dashboard)
+- [x] Task: Build React Node-Graph Component (RAM Dashboard) [75ef665]
     - [ ] Write Failing Tests: Test rendering of basic node clusters
     - [ ] Implement: Integrate a node-graph library (e.g., React Flow) to visualize AAL scripts
 - [ ] Task: Conductor - User Manual Verification 'Horizon Node-Graph Integration' (Protocol in workflow.md)
