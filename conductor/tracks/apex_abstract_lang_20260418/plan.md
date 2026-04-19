@@ -10,7 +10,7 @@
 - [x] Task: Conductor - User Manual Verification 'AAL Specification & Grammar' (Protocol in workflow.md) [f32a127]
 
 ## Phase 2: Core Interpreter Development
-- [ ] Task: Implement Lexer and Parser for AAL
+- [x] Task: Implement Lexer and Parser for AAL [d2304c8]
     - [ ] Write Failing Tests: Define test scripts that should/should not parse
     - [ ] Implement: Build a robust parser using a library or custom logic in Bun/TS
 - [ ] Task: Create Internal Representation (IR) Mapper
