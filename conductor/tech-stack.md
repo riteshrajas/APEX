@@ -4,12 +4,14 @@
 - **Bun:** High-performance JavaScript/TypeScript runtime for the primary CLI brain.
 - **TypeScript:** Typed programming for robust, scalable system architecture.
 - **React (Ink):** Building responsive, component-driven Terminal User Interfaces (TUI).
+- **APEX Abstract Language (AAL):** Custom high-level abstraction for LLM-driven orchestration.
 - **Python:** Powering the comprehensive system-level test suites (`pytest`).
 
 ## 🖥️ Web Dashboard (RAM)
 - **Next.js:** Full-stack framework for the knowledge management interface.
 - **React:** Component-based UI for the dashboard dashboard.
 - **Tailwind CSS:** Utility-first styling for a sleek, responsive design.
+- **React Flow (@xyflow/react):** Interactive node-graph visualization for AAL scripts.
 
 ## 🔌 Hardware Bridge & Firmware (MicroMax)
 - **C++:** Low-level language for performant microcontroller firmware.

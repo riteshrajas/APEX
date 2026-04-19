@@ -16,6 +16,7 @@ The singular mission of APEX is to serve as an **Autonomous Physical-Digital Bri
 For the next phase of development, the focus is on enhancing the "Brain" and the "Interface":
 - **Realtime Voice Orchestration:** Low-latency conversational control (invoked on boot) with proactive status alerts and automated neural sync.
 - **Autonomous Multi-Agent Tooling:** Advanced integration of MCP, allowing a Master Agent to delegate tasks to specialized workers with full CLI and file system access.
+- **APEX Abstract Language (AAL):** A high-level, token-efficient declarative language for LLM-driven orchestration of AI agents and IoT devices, with native node-graph visualization.
 
 ## 🛠️ Technical Constraints
 - **Local-First Execution:** To ensure privacy, speed, and reliability, the core logic and agentic orchestration must run efficiently on local machines using Bun and Node.js.
