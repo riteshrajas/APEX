@@ -1,7 +1,7 @@
 # Implementation Plan: APEX Abstract Language (AAL)
 
 ## Phase 1: AAL Specification & Grammar
-- [ ] Task: Define the Core Grammar (EBNF-like) and Primitives
+- [x] Task: Define the Core Grammar (EBNF-like) and Primitives [ce83281]
     - [ ] Write Failing Tests: Define expected tokens and basic parsing outcomes
     - [ ] Implement: Draft the `AAL_SPEC.md` with syntax rules and examples
 - [ ] Task: Create Token Optimization Strategy
