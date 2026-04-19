@@ -18,14 +18,14 @@
     - [x] Implement: Develop the IR layer to facilitate visualization and execution
 - [x] Task: Conductor - User Manual Verification 'Core Interpreter Development' (Protocol in workflow.md) [addb5d9]
 
-## Phase 3: Horizon Node-Graph Integration
+## Phase 3: Horizon Node-Graph Integration [checkpoint: 39b3676]
 - [x] Task: Define Visualization Protocol for Horizon [e4bf9e2]
-    - [ ] Write Failing Tests: Verify node/edge generation from AAL IR
-    - [ ] Implement: Extend the Horizon API to accept AAL-driven configurations
+    - [x] Write Failing Tests: Verify node/edge generation from AAL IR
+    - [x] Implement: Extend the Horizon API to accept AAL-driven configurations
 - [x] Task: Build React Node-Graph Component (RAM Dashboard) [75ef665]
-    - [ ] Write Failing Tests: Test rendering of basic node clusters
-    - [ ] Implement: Integrate a node-graph library (e.g., React Flow) to visualize AAL scripts
-- [ ] Task: Conductor - User Manual Verification 'Horizon Node-Graph Integration' (Protocol in workflow.md)
+    - [x] Write Failing Tests: Test rendering of basic node clusters
+    - [x] Implement: Integrate a node-graph library (e.g., React Flow) to visualize AAL scripts
+- [x] Task: Conductor - User Manual Verification 'Horizon Node-Graph Integration' (Protocol in workflow.md) [39b3676]
 
 ## Phase 4: End-to-End Validation
 - [ ] Task: Implement "Hello World" Agentic/IoT Flows
