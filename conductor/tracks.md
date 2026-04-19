@@ -20,6 +20,6 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 ---
 
-- [~] **Track: APEX Abstract Language (AAL)**
+- [x] **Track: APEX Abstract Language (AAL)**
 *Link: [./tracks/apex_abstract_lang_20260418/](./tracks/apex_abstract_lang_20260418/)*
 
