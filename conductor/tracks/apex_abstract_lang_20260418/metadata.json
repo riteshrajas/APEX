@@ -1,0 +1,8 @@
+{
+  "track_id": "apex_abstract_lang_20260418",
+  "type": "feature",
+  "status": "new",
+  "created_at": "2026-04-18T10:30:00Z",
+  "updated_at": "2026-04-18T10:30:00Z",
+  "description": "Create a high-level abstract programming language (AAL) for LLMs to orchestrate AI agents and IOT boards with node-graph visualization."
+}

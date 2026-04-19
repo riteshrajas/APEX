@@ -17,3 +17,9 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 - [ ] **Track: Apex Mobile Client**
 *Link: [./tracks/apex_mobile_client_20260418/](./tracks/apex_mobile_client_20260418/)*
+
+---
+
+- [ ] **Track: APEX Abstract Language (AAL)**
+*Link: [./tracks/apex_abstract_lang_20260418/](./tracks/apex_abstract_lang_20260418/)*
+
