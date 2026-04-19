@@ -13,7 +13,7 @@
 - [x] Task: Implement Lexer and Parser for AAL [d2304c8]
     - [ ] Write Failing Tests: Define test scripts that should/should not parse
     - [ ] Implement: Build a robust parser using a library or custom logic in Bun/TS
-- [ ] Task: Create Internal Representation (IR) Mapper
+- [x] Task: Create Internal Representation (IR) Mapper [8de799d]
     - [ ] Write Failing Tests: Verify AAL-to-JSON mapping for node structures
     - [ ] Implement: Develop the IR layer to facilitate visualization and execution
 - [ ] Task: Conductor - User Manual Verification 'Core Interpreter Development' (Protocol in workflow.md)
