@@ -4,7 +4,7 @@
 - [x] Task: Define the Core Grammar (EBNF-like) and Primitives [ce83281]
     - [ ] Write Failing Tests: Define expected tokens and basic parsing outcomes
     - [ ] Implement: Draft the `AAL_SPEC.md` with syntax rules and examples
-- [ ] Task: Create Token Optimization Strategy
+- [x] Task: Create Token Optimization Strategy [6fcffa9]
     - [ ] Write Failing Tests: Measure token usage for a baseline agent flow
     - [ ] Implement: Optimize syntax keywords for maximum information density
 - [ ] Task: Conductor - User Manual Verification 'AAL Specification & Grammar' (Protocol in workflow.md)
