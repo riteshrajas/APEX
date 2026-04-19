@@ -1,13 +1,13 @@
 # Implementation Plan: APEX Abstract Language (AAL)
 
-## Phase 1: AAL Specification & Grammar
+## Phase 1: AAL Specification & Grammar [checkpoint: f32a127]
 - [x] Task: Define the Core Grammar (EBNF-like) and Primitives [ce83281]
-    - [ ] Write Failing Tests: Define expected tokens and basic parsing outcomes
-    - [ ] Implement: Draft the `AAL_SPEC.md` with syntax rules and examples
+    - [x] Write Failing Tests: Define expected tokens and basic parsing outcomes
+    - [x] Implement: Draft the `AAL_SPEC.md` with syntax rules and examples
 - [x] Task: Create Token Optimization Strategy [6fcffa9]
-    - [ ] Write Failing Tests: Measure token usage for a baseline agent flow
-    - [ ] Implement: Optimize syntax keywords for maximum information density
-- [ ] Task: Conductor - User Manual Verification 'AAL Specification & Grammar' (Protocol in workflow.md)
+    - [x] Write Failing Tests: Measure token usage for a baseline agent flow
+    - [x] Implement: Optimize syntax keywords for maximum information density
+- [x] Task: Conductor - User Manual Verification 'AAL Specification & Grammar' (Protocol in workflow.md) [f32a127]
 
 ## Phase 2: Core Interpreter Development
 - [ ] Task: Implement Lexer and Parser for AAL
