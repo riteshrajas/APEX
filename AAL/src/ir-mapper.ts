@@ -24,6 +24,14 @@ export function mapToIR(ast: any) {
         lastEdge.trigger = node.name;
         lastEdge.action = node.action;
       }
+    } else if (node.type === "Delegation") {
+      if (currentContext) {
+        edges.push({
+          source: currentContext,
+          target: node.target,
+          type: "delegation"
+        });
+      }
     }
   }
 
