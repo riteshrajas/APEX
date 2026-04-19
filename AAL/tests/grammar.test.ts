@@ -3,7 +3,7 @@ import { parseAAL } from "../src/parser";
 
 describe("AAL Grammar", () => {
   test("should parse basic agent definition", () => {
-    const code = `DEFINE AGENT "WeatherBot"`;
+    const code = `AGENT "WeatherBot"`;
     const ast = parseAAL(code);
     expect(ast).toEqual({
       type: "Program",
@@ -18,10 +18,10 @@ describe("AAL Grammar", () => {
 
   test("should parse connection and triggers", () => {
     const code = `
-DEFINE AGENT "WeatherBot"
-CONNECT TO "TempSensor"
-ON TRIGGER "high_temp"
-  EXECUTE "alert_user"
+AGENT "WeatherBot"
+LINK "TempSensor"
+ON "high_temp"
+  EXEC "alert_user"
     `.trim();
     
     const ast = parseAAL(code);
