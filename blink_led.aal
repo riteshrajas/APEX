@@ -1,0 +1,5 @@
+IOT "LED_GPIO4"
+AGENT "BlinkerAgent"
+LINK "LED_GPIO4"
+ON "timer_tick"
+  EXEC "toggle_led"
