@@ -7,7 +7,7 @@
 ## Repository Audit Findings
 1. The primary in-repo ASP references are in:
    - `./ARCHITECTURE.md`
-   - `./AI_PROMPTS.md`
+   - `./SPEC_ASP_V2.md`
    - `./MicroMax/README.md`
 2. Current documented baseline for ASP:
    - JSON messages

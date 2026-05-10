@@ -1,43 +1,71 @@
-# 🤖 APEX Agent Capabilities
+# AGENT.md - APEX Agent Notes
 
-This document outlines the AI and agentic capabilities built into the APEX Core/CLI layer. APEX operates not just as a command-line tool, but as a fully autonomous orchestration engine.
+This guide gives future coding agents a quick orientation for the APEX workspace. For mandatory repository rules, follow [AGENTS.md](./AGENTS.md).
 
-## Core Agent Architecture
+## Fast Startup
 
-APEX leverages an advanced orchestration layer built on top of multiple AI providers. It uses **TypeScript** and **React (Ink)** to provide a seamless terminal-based conversational interface, while managing complex background tasks.
+1. Check branch and worktree state:
+   ```bash
+   git status --short
+   ```
+2. Inspect submodule state:
+   ```bash
+   git submodule status --recursive
+   ```
+3. If submodules are missing, initialize them from a network-enabled environment:
+   ```bash
+   git submodule update --init --recursive
+   ```
 
-### Supported AI Providers
-- **Anthropic (Claude)**: Primary reasoning engine.
-- **AWS Bedrock**: Enterprise scaling and alternate model access.
-- **Google Vertex AI**: Advanced multimodal and high-context reasoning.
+## Repository Map
 
-## Sub-Agents and Roles
-APEX uses specialized sub-agents and flags to handle different task scopes:
-- `VERIFICATION_AGENT`: Specialized in verifying tasks, managing todos, and ensuring completion criteria are met before returning control.
-- `BUILTIN_EXPLORE_PLAN_AGENTS`: Dedicated planners that map out large-scale changes before execution.
-- `BASH_CLASSIFIER`: A specialized classifier agent that evaluates the safety and intent of bash commands before they are executed in auto-mode.
+- Root docs and project context:
+  - [README.md](./README.md)
+  - [ARCHITECTURE.md](./ARCHITECTURE.md)
+  - [SPEC_ASP_V2.md](./SPEC_ASP_V2.md)
+  - [ROADMAP.md](./ROADMAP.md)
+  - [MASTER_SETUP_GUIDE.md](./MASTER_SETUP_GUIDE.md)
+- Core software stack:
+  - [Core/README.md](./Core/README.md)
+  - [Core/CLI/README.md](./Core/CLI/README.md)
+  - [Core/CLI/FEATURES.md](./Core/CLI/FEATURES.md)
+  - [Core/RAM/README.md](./Core/RAM/README.md)
+- Hardware and node docs:
+  - [MicroMax/README.md](./MicroMax/README.md)
+  - [MiniMax/README.md](./MiniMax/README.md)
+  - [MegaMax/README.md](./MegaMax/README.md)
+  - [docs/MicroMax/DOCS.md](./docs/MicroMax/DOCS.md)
+  - [docs/MiniMax/DOCS.md](./docs/MiniMax/DOCS.md)
+  - [docs/MegaMax/DOCS.md](./docs/MegaMax/DOCS.md)
+- Planning layer:
+  - [conductor/README.md](./conductor/README.md)
+  - [conductor/index.md](./conductor/index.md)
+  - [conductor/tracks.md](./conductor/tracks.md)
 
-## Model Context Protocol (MCP) Integration
-APEX heavily utilizes the **Model Context Protocol (MCP)** to securely and standardly interact with the host system and external services.
-- **`CHICAGO_MCP`**: Enables computer-use MCP integration, allowing the agent to control the desktop environment, capture terminal output, and manage files.
-- **`MCP_RICH_OUTPUT`**: Renders complex MCP tool responses natively in the Ink terminal UI.
-- **Skill Builders**: APEX can dynamically load external MCP servers and expose them as tools to the core agent.
+## Core/CLI Notes
 
-## Memory and Context Management
-To maintain long-term coherence across sessions, APEX employs a multi-tiered memory system:
-- **`AGENT_MEMORY_SNAPSHOT`**: Dumps and restores the internal state of custom agents.
-- **`CACHED_MICROCOMPACT`**: Uses semantic caching and micro-compaction to keep context windows lean while retaining critical facts.
-- **`TEAMMEM`**: Supports shared "team memory" files across different agent instances or collaborative environments.
-- **`EXTRACT_MEMORIES`**: Post-query hooks automatically extract facts and user preferences from conversations and persist them.
+Core/CLI is the terminal-first AI runtime. Start with:
 
-## Execution Modes
-- **Interactive REPL**: The default mode, offering a chat interface with a prompt history picker (`HISTORY_PICKER`).
-- **`VOICE_MODE`**: Enables push-to-talk interactions, dictation, and voice synthesis.
-- **`ULTRAPLAN` & `ULTRATHINK`**: High-depth reasoning modes where the agent generates detailed step-by-step roadmaps before writing any code.
-- **`POWERSHELL_AUTO_MODE`**: Allows the agent to autonomously execute sequences of PowerShell commands without manual confirmation for each step (guarded by the Bash Classifier).
-- **`AWAY_SUMMARY`**: Automatically summarizes activities and notifications that occurred while the user was away from the keyboard.
+- Query lifecycle: [Core/CLI/src/QueryEngine.ts](./Core/CLI/src/QueryEngine.ts)
+- Slash command registry: [Core/CLI/src/commands.ts](./Core/CLI/src/commands.ts)
+- Tool registry: [Core/CLI/src/tools.ts](./Core/CLI/src/tools.ts)
+- Runtime dependencies and scripts: [Core/CLI/package.json](./Core/CLI/package.json)
 
-## Remote and Bridge Capabilities
-APEX can act as a localized brain for distributed systems:
-- **`BRIDGE_MODE`**: Allows remote control and REPL bridging across different machines.
-- **`CCR_MIRROR` & `CCR_AUTO_CONNECT`**: Outbound and inbound connection routing for distributed agent clusters.
+Useful feature areas include model/provider routing, tool execution, slash commands, session state, MCP integration, and task orchestration flags documented in [Core/CLI/FEATURES.md](./Core/CLI/FEATURES.md).
+
+## Core/RAM Notes
+
+Core/RAM is the realtime dashboard and memory interface. Start with:
+
+- App page shell: [Core/RAM/src/app/page.tsx](./Core/RAM/src/app/page.tsx)
+- Voice UX and session handling: [Core/RAM/src/components/VoiceAgent.tsx](./Core/RAM/src/components/VoiceAgent.tsx)
+- Server actions: [Core/RAM/src/app/actions.ts](./Core/RAM/src/app/actions.ts)
+- Knowledge-base loader: [Core/RAM/src/lib/knowledge-base.ts](./Core/RAM/src/lib/knowledge-base.ts)
+
+The practical integration model is: RAM captures user intent, maps it to typed CLI actions, CLI executes the work, and RAM reflects the result back into the conversation and dashboard state.
+
+## Working Priorities
+
+- For software tasks, check Core/CLI and Core/RAM first.
+- For hardware behavior or protocol changes, check MicroMax and update [SPEC_ASP_V2.md](./SPEC_ASP_V2.md) when message semantics change.
+- For planning or workflow changes, update the relevant conductor docs instead of creating new root-level planning files.
